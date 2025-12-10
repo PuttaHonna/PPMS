@@ -1,0 +1,4 @@
+src/components/3d/ImmersiveBackground.tsx(56,13): error TS18047: 'mesh.current' is possibly 'null'.
+src/components/tasks/TaskInput.tsx(5,1): error TS6133: 'clsx' is declared but its value is never read.
+src/components/tasks/TaskInput.tsx(6,1): error TS6133: 'twMerge' is declared but its value is never read.
+src/components/tasks/TaskItem.tsx(1,24): error TS1484: 'Task' is a type and must be imported using a type-only import when 'verbatimModuleSyntax' is enabled.

@@ -1,0 +1,103 @@
+import React, { useState } from 'react';
+import { User, Mail, Lock, ArrowRight } from 'lucide-react';
+import { useAuthStore } from '../../store/useAuthStore';
+
+interface SignUpFormProps {
+    onToggle: () => void;
+    onSuccess?: () => void;
+}
+
+const SignUpForm: React.FC<SignUpFormProps> = ({ onToggle, onSuccess }) => {
+    const [username, setUsername] = useState('');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [error, setError] = useState('');
+    const { signup } = useAuthStore();
+
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+        setError('');
+        if (username.trim() && email.trim() && password.trim()) {
+            const { error } = await signup(email, password, username);
+            if (error) {
+                setError(error.message);
+            } else {
+                if (onSuccess) onSuccess();
+            }
+        }
+    };
+
+    return (
+        <div className="w-full">
+            <h2 className="text-2xl font-bold text-center mb-6 text-gray-800">
+                Join Us!
+            </h2>
+
+            <form className="space-y-4" onSubmit={handleSubmit}>
+                {error && (
+                    <div className="p-3 text-sm text-red-500 bg-red-50 rounded-lg">
+                        {error}
+                    </div>
+                )}
+                <div className="relative group">
+                    <User className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400 group-focus-within:text-purple-500 transition-colors" />
+                    <input
+                        type="text"
+                        required
+                        value={username}
+                        onChange={(e) => setUsername(e.target.value)}
+                        className="w-full pl-12 pr-4 py-3 bg-gray-50 border-none rounded-2xl focus:ring-2 focus:ring-purple-500/20 focus:bg-white transition-all text-gray-800 placeholder-gray-400 text-sm font-medium"
+                        placeholder="Username"
+                    />
+                </div>
+
+                <div className="relative group">
+                    <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400 group-focus-within:text-purple-500 transition-colors" />
+                    <input
+                        type="email"
+                        required
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        className="w-full pl-12 pr-4 py-3 bg-gray-50 border-none rounded-2xl focus:ring-2 focus:ring-purple-500/20 focus:bg-white transition-all text-gray-800 placeholder-gray-400 text-sm font-medium"
+                        placeholder="Email"
+                    />
+                </div>
+
+                <div className="relative group">
+                    <Lock className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400 group-focus-within:text-purple-500 transition-colors" />
+                    <input
+                        type="password"
+                        required
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                        className="w-full pl-12 pr-4 py-3 bg-gray-50 border-none rounded-2xl focus:ring-2 focus:ring-purple-500/20 focus:bg-white transition-all text-gray-800 placeholder-gray-400 text-sm font-medium"
+                        placeholder="Password"
+                    />
+                </div>
+
+                <button
+                    type="submit"
+                    className="w-full py-3 bg-gradient-to-r from-cyan-500 to-purple-500 text-white font-semibold rounded-2xl shadow-lg shadow-purple-500/20 hover:shadow-purple-500/40 hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center gap-2 text-sm"
+                >
+                    Sign Up
+                    <ArrowRight className="w-4 h-4" />
+                </button>
+
+                <div className="text-center mt-4">
+                    <p className="text-xs text-gray-500">
+                        Already have an account?{' '}
+                        <button
+                            type="button"
+                            onClick={onToggle}
+                            className="text-purple-600 font-semibold hover:underline"
+                        >
+                            Sign In
+                        </button>
+                    </p>
+                </div>
+            </form>
+        </div>
+    );
+};
+
+export default SignUpForm;

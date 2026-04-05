@@ -1,73 +1,37 @@
-# React + TypeScript + Vite
+# Get Set Grow! (PPM Dashboard)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A React+TypeScript application designed to boost productivity with an interactive 3D gaming-inspired interface. The dashboard allows users to manage tasks effectively using various tailored views like an Eisenhower Matrix, a Graph network view, interactive notes, and gamified task tracking features.
 
-Currently, two official plugins are available:
+## ✨ Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Gamified Task Management**: Earn XP while completing tasks.
+- **Multiple Interactive Views**:
+  - **List View**: Traditional, ordered task list with search functionality.
+  - **Eisenhower Matrix**: Organize tasks by urgency and importance.
+  - **Calendar**: Keep track of task deadlines.
+  - **Graph View**: Visual map of connected tasks and ideas.
+  - **Notes**: Built-in simple note-taking system.
+- **3D Interactive Backgrounds**: Enjoy a soothing and futuristic 3D background using React Three Fiber.
+- **XP Shop**: Gain XP from daily activities and redeem them.
+- **Secure Authentication**: Backend login system managed with Firebase.
 
-## React Compiler
+## 🛠️ Tech Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **Frontend Framework**: React 19, TypeScript, Vite
+- **State Management**: Zustand
+- **3D Graphics & Animations**: Three.js, React Three Fiber, React Three Drei, Framer Motion
+- **Styling**: Tailwind CSS
+- **Backend & Auth**: Firebase
+- **Icons**: Lucide React
 
-## Expanding the ESLint configuration
+## 🚀 Getting Started
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### Prerequisites
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+Ensure you have [Node.js](https://nodejs.org/) installed on your machine.
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+### Installation
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+1. Clone the repository:
+   ```bash
+   git clone <repository-url>
